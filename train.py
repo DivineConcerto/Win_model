@@ -7,7 +7,7 @@ tokenizer = GPT2TokenizerFast.from_pretrained('gpt2')
 tokenizer.pad_token = tokenizer.eos_token  # 使用eos_token作为填充符号
 # 定义模型和数据集
 model = GPT2LMHeadModel.from_pretrained('gpt2')
-dataset = load_dataset('text',data_files={'train': './train.txt','test':'./test.txt'})
+dataset = load_dataset('text',data_files={'train': './data/train.txt','test':'./data/test.txt'})
 # 定义编码函数
 def tokenize_function(examples):
     tokens = tokenizer(examples['text'], padding="max_length", truncation=True, max_length=block_size)
@@ -30,7 +30,7 @@ trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=tokenizer_dataset['train'],
-    eval_dataset=tokenizer_dataset['test'],
+    # eval_dataset=tokenizer_dataset['test'],
 )
 # 训练并保存模型
 trainer.train()
