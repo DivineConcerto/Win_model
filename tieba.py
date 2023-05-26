@@ -3,7 +3,7 @@ import scrapy
 
 class TiebaSpider(scrapy.Spider):
     name = 'tieba'
-    start_urls = ['https://tieba.baidu.com/f?kw=燕山大学']
+    start_urls = ['https://tieba.baidu.com/f?kw=指定吧名']
 
     custom_settings = {
         'ITEM_PIPELINES': {'tieba.TiebaPipeline': 1},
